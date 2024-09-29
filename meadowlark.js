@@ -1,13 +1,13 @@
 const express = require('express');
+const handlebars = require('express3-handlebars');
 const fortune = require('./lib/fortune.js');
-const handlebars = require('express3-handlebars').create({ defaultLayout: 'main' });
 
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 
-app.engine('handlebars', handlebars.engine);
+app.engine('handlebars', handlebars.create({ defaultLayout: 'main' }).engine);
 app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
