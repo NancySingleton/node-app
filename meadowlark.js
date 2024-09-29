@@ -2,7 +2,9 @@ const express = require('express');
 const handlebars = require('express3-handlebars').create({ defaultLayout: 'main' });
 
 const app = express();
+
 app.set('port', process.env.PORT || 3000);
+app.use(express.static(__dirname + '/public'));
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
